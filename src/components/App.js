@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import logo from '../images/logo.svg';
+import { PageHeader, Grid, Row, Col } from 'react-bootstrap';
+import Filter from './Filter';
+import List from './List';
+import NewPostForm from './NewPostForm';
 import '../styles/App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Grid>
+          <Row>
+            <Col xs={12}>
+              <PageHeader>Post-app</PageHeader>
+              <Filter/>
+              <List/>
+              <NewPostForm/>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
