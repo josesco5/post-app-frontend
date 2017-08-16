@@ -1,10 +1,6 @@
 const initialState = {
   filter: '',
-  posts: [
-    {name: 'Game of Thrones', description: 'Written by George R.R. Martin'},
-    {name: 'Game of Thrones', description: 'Written by George R.R. Martin'},
-    {name: 'Hunger Games', description: 'Written by Suzzane Collins'}
-  ],
+  posts: [],
   name: '',
   description: ''
 };
@@ -17,6 +13,12 @@ function posts(state = initialState, action) {
       console.log('Reducer: FILTER_POST');
       console.log(action.value);
       break;
+    case 'RECEIVE_POSTS':
+      console.log('Reducer: RECEIVE_POSTS');
+      console.log(action.posts);
+      return Object.assign({}, state, {
+        posts: action.posts
+      });
     case 'FILTER_NAME_CHANGED':
       console.log('Reducer: FILTER_NAME_CHANGED');
       return Object.assign({}, state, {

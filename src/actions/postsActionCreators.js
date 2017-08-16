@@ -20,6 +20,29 @@ export function createPost(name, description) {
   }
 }
 
+export function fetchPosts(filter) {
+  return (dispatch) => {
+    let url = 'http://localhost:3001/api/posts'
+    if (filter) {
+      url += "?filter=" + filter;
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(function(json) {
+        console.log('fetchPosts');
+        console.log(json);
+        dispatch(receivePosts(json));
+      });
+  }
+}
+
+export function receivePosts(posts) {
+  return {
+    type: 'RECEIVE_POSTS',
+    posts
+  }
+}
+
 export function filterPosts(value) {
   return {
     type: 'FILTER_POST',
