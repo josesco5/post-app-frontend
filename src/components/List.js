@@ -2,23 +2,14 @@ import React, { Component } from 'react';
 import { Table, Button } from 'react-bootstrap';
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: [
-        {name: 'Game of Thrones', description: 'Written by George R.R. Martin'},
-        {name: 'Hunger Games', description: 'Written by Suzzane Collins'}
-      ]
-    };
-  }
-
   render() {
-    const rows = this.state.posts.map((post) =>
+    const actions = this.props.actions;
+    const rows = this.props.posts.map((post) =>
       <tr>
         <td>{post.name}</td>
         <td>{post.description}</td>
         <td>
-          <Button bsStyle="link">Eliminar</Button>
+          <Button bsStyle="link" onClick={(event) => actions.deletePost(post)}>Eliminar</Button>
         </td>
       </tr>
     );

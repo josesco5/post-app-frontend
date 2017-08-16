@@ -1,27 +1,16 @@
-import React, { Component } from 'react';
-import { PageHeader, Grid, Row, Col } from 'react-bootstrap';
-import Filter from './Filter';
-import List from './List';
-import NewPostForm from './NewPostForm';
-import '../styles/App.css';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/postsActionCreators';
+import Main from './Main';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              <PageHeader>Post-app</PageHeader>
-              <Filter/>
-              <List/>
-              <NewPostForm/>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
-    );
-  }
+function mapStateToProps(state) {
+  return state;
 }
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;
