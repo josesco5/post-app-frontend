@@ -13,10 +13,24 @@ export function newPostDescriptionChanged(value) {
 }
 
 export function createPost(name, description) {
+  return (dispatch) => {
+    fetch('http://localhost:3001/api/posts', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, description })
+    })
+    .then(response => response.json())
+    .then(post => dispatch(createPostSuccess(post)));
+  }
+}
+
+export function createPostSuccess(post) {
   return {
-    type: 'CREATE_POST',
-    name,
-    description
+    type: 'CREATE_POST_SUCCESS',
+    post
   }
 }
 

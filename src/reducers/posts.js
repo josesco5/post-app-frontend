@@ -34,16 +34,12 @@ function posts(state = initialState, action) {
       return Object.assign({}, state, {
         description: action.value
       });
-    case 'CREATE_POST':
-      console.log('Reducer: CREATE_POST');
-      console.log(action);
-      const name = action.name;
-      const description = action.description;
-
+    case 'CREATE_POST_SUCCESS':
+      console.log('Reducer: CREATE_POST_SUCCESS');
       return Object.assign({}, state, {
         posts: [
           ...state.posts,
-          { name, description }
+          action.post
         ],
         name: '',
         description: ''
