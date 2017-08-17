@@ -72,8 +72,19 @@ export function filterNameChanged(value) {
 }
 
 export function deletePost(post) {
+  return (dispatch) => {
+    fetch("http://localhost:3001/api/posts/" + post.id , {
+      method: "DELETE"
+    })
+    .then(function(response) {
+      dispatch(deletePostSuccess(post));
+    });
+  }
+}
+
+export function deletePostSuccess(post) {
   return {
-    type: 'DELETE_POST',
+    type: 'DELETE_POST_SUCCESS',
     post
   }
 }

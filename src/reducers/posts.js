@@ -48,6 +48,15 @@ function posts(state = initialState, action) {
       console.log('Reducer: DELETE_POST');
       console.log(action.post);
       break;
+    case 'DELETE_POST_SUCCESS':
+      console.log('Reducer: DELETE_POST_SUCCESS');
+      const index = state.posts.findIndex((post) => post.id === action.post.id);
+      return Object.assign({}, state, {
+        posts: [
+          ...state.posts.slice(0, index),
+          ...state.posts.slice(index + 1)
+        ]
+      })
     default:
       break;
   }
