@@ -5,7 +5,7 @@ class List extends Component {
   render() {
     const actions = this.props.actions;
     const rows = this.props.posts.map((post) =>
-      <tr>
+      <tr key={post.id}>
         <td>{post.name}</td>
         <td>{post.description}</td>
         <td>

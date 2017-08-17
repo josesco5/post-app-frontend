@@ -42,10 +42,8 @@ export function fetchPosts(filter) {
     }
     fetch(url)
       .then(response => response.json())
-      .then(function(json) {
-        console.log('fetchPosts');
-        console.log(json);
-        dispatch(receivePosts(json));
+      .then(function(posts) {
+        dispatch(receivePosts(posts));
       });
   }
 }
@@ -54,13 +52,6 @@ export function receivePosts(posts) {
   return {
     type: 'RECEIVE_POSTS',
     posts
-  }
-}
-
-export function filterPosts(value) {
-  return {
-    type: 'FILTER_POST',
-    value
   }
 }
 
